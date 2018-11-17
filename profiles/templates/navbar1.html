@@ -1,0 +1,33 @@
+{% load static %}
+<nav class="main-nav-outer" id="test"><!--main-nav-start-->
+  <div class="container">
+  {% url 'profile' as profile %}
+  {% url 'carts:cart' as cart %}
+        <ul class="main-nav">
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#service">Services</a></li>
+            <li class="small-logo"><a href="#header"><img src="{% static 'img/logo.png' %}" alt=""></a></li>
+
+          <!--
+          <li><a href="/login"> <i class="fa fa-shopping-cart" style="font-size:25px"></i> <i class="badge" style="margin-left: -20px; margin-top: -10px;position: absolute;">2</i> ksh.100 </a></li>
+          -->
+            <li><a href="#contact">Contact</a></li>
+            <li class="nav-item {% if request.path == profile %} active {% endif %}">
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+          </li>
+          <li class="nav-item {% if request.path == cart %} active {% endif %}">
+            <a class="nav-link" href="{% url 'carts:cart' %}">{{ request.session.cart_items }}<i class="fas fa-shopping-cart"></i> </a>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+            {% if not request.user.is_authenticated %}
+              <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
+              <a class="dropdown-item" href="{% url 'account_login' %}">Login </a>
+            {% else %}
+              <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+            {% endif %}
+            </div>
+          </li>
+      </div>
+</nav>

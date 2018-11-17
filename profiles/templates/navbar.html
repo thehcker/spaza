@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">{% if brand_name %} {{ brand_name }} {% else %} Spazza {% endif %}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      {% url 'index' as index %}
+      {% url 'profile' as profile %}
+      {% url 'products:list' as product_list %}
+      {% url 'carts:cart' as cart %}
+      
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item {% if request.path == index %} active {% endif %}">
+            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item {% if request.path == profile %} active {% endif %}">
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+          </li>
+          <li class="nav-item {% if request.path == product_list %} active {% endif %}">
+            <a class="nav-link" href="{% url 'products:list' %}">Products</a>
+          </li>
+          <li class="nav-item {% if request.path == cart %} active {% endif %}">
+            <a class="nav-link" href="{% url 'carts:cart' %}">{{ request.session.cart_items }}<i class="fas fa-shopping-cart"></i> </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+            {% if not request.user.is_authenticated %}
+              <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
+              <a class="dropdown-item" href="{% url 'account_login' %}">Login </a>
+            {% else %}
+              <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+            {% endif %}
+            </div>
+          </li>
+        </ul>
+        {% include 'search/snippets/search-form.html' %}
+      </div>
+    </nav>
