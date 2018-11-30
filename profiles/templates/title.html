@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Titledeed</title>
+</head>
+<body>
+
+{% block two %}
+
+<div class="row">
+  <div class='col-md-4 col-md-offset-4'>
+   <h1>Land details</h1>
+<table border="1px solid red">
+  <tr>
+
+    <th>Username</th>
+    <th>address</th>
+    <th>description</th> 
+  </tr>
+  {% for i in title %}
+  <tr>
+    <td>{{ i.name }}</td>
+    <td>{{ i.address }}</td> 
+    <td>{{ i.description }}</td>
+  </tr>
+  {%  endfor %}
+  {% endblock %}
+  </div>
+</div>
+</table>
+  
+</body>
+</html>

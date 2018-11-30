@@ -27,6 +27,19 @@
 <script type="text/javascript" src="{% static 'js/jquery.isotope.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/wow.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/classie.js' %}"></script>
+<style type="text/css">
+    
+    @media (min-width: 500px) {
+        .myaccount{
+        display:none;
+        color:black;
+        }
+    @media (max-width: 499px) {
+        .myaccount{
+        color:black;
+        }
+    }
+</style>
 
 </head>
 <body>
@@ -79,7 +92,7 @@
                     	<i class="fa-shopping-cart"></i>
                     </div>
                 	<div class="service-list-col2">
-                        <h3>Order</h3>
+                        <a href="{% url 'products:list' %}"><h3>Order</h3></a>
                         <p>Make your orders now! You can order a variety of food stuffs from a variety of hotels and restaurants.</p>
                     </div>
                 </div>
@@ -102,7 +115,7 @@
                     </div>
                 </div>
             </div>
-
+            
         </div>
 	</div>
 </section><!--main-section-end-->
@@ -195,9 +208,20 @@
                         <button type="submit" class="input-btn">Send Message</button>
                     </form>
                 </div>
+                
             </div>
         </div>
 </section>
+</div>
+<div class="container">
+    <div class="row myaccount">
+                <div class="col-sm-6">
+                 <h2><a href="{% url 'account_signup' %}">Sign Up</a></h2>
+                 <h2><a href="{% url 'account_login' %}">Login</a></h2>
+
+                </div>
+            </div>
+
 </div>
 <footer class="footer">
     <div class="container">

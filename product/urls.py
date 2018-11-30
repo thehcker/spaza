@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from profiles import views as profiles_views
 from carts import views as carts_views
 from contact import views as contact_views
+from addresses import views as addresses_views
 #from products import views as products_views
 
 urlpatterns = [
@@ -32,9 +33,13 @@ urlpatterns = [
     path('cart/', include(('carts.urls','carts'),namespace='carts')),
     path('list/', include(('products.urls','products'),namespace='products')),
     path('profile/',profiles_views.userProfile,name='profile'),
+    path('checkout/address/create/',addresses_views.checkout_address_create_view,name='checkout_address_create'),
+    path('checkout/address/reuse/',addresses_views.checkout_address_reuse_view,name='checkout_address_reuse'),
+    path('register/guest/',profiles_views.guest_register_view,name='guest_register'),
+    path('profile/', profiles_views.userProfile, name='profile'),
+    path('myupload/', profiles_views.model_profile_upload, name='myupload'),
     path('accounts/', include('allauth.urls')),
     path('search/', include(('search.urls','search'),namespace='search')),
-
     #path('list/', products_views.product_list_view, name='list'),
     #path('list/<int:pk>/', products_views.product_detail_view, name='detail'),
     #re_path(r'^list/(?P<slug>[\w-]+)/$', products_views.product_detail_slug_view, name='detail'),

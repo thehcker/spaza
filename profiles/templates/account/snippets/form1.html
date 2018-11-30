@@ -1,0 +1,7 @@
+<form method="POST" action="{% if action_url %}{{ action_url }}{% else %}{% url 'account_login' %}{% endif %}">{% csrf_token %}
+{{ form }}
+{% if next_url %}
+  <input type="hidden" name="next" value="carts:checkout">
+  {% endif %}
+<input type="submit" value="submit form" class="btn btn-default"/>
+</form>

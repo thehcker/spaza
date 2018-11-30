@@ -1,13 +1,16 @@
+
+<div class="card-group">
 <div class="card" style="width: 18rem;">
 {% if instance.image %}
 <a href="{{ instance.get_absolute_url }}"><img class="card-img-top" src="{{ instance.image.url }}" alt="{{ instance.title }} logo"></a>
 {% endif %}
   <div class="card-body">
     <h5 class="card-title">{{ instance.title }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
     <p class="card-text">{{ instance.description | linebreaks | truncatewords:14 }}</p>
     <a href="{{ instance.get_absolute_url }}" class="btn btn-primary">View</a>
     <!--<a href="{% url 'products:detail' slug=instance.slug %}" class="btn btn-warning">Sub-View</a>-->
     
   </div>
+</div>
 </div>

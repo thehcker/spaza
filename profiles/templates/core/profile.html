@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+	<div class="col-md-4 col-sm-offset-12">
+	{% if object.image %}
+	<img src="{{ user.profile.image.url }}">
+	{% endif %}
+	
+
+	</div>
+	<div class="col-md-4 col-sm-offset-12">
+	<h3>Welcome: {{ user.username }}</h3>
+	<h3>City: {{ user.profile.city }}</h3>
+	<p>Address: {{ user.profile.address }}</p>
+	<p>Last Seen on: {{ user.profile.last_seen }}</p>
+	
+	<a href='{% url "myupload" %}'><p>Edit Profile</p></a>
+	<a href="{% url 'products:list' %}"><p>Products</p></a>
+</div>
+</div>
+</div>
+
+{% endblock %}

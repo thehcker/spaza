@@ -53,6 +53,9 @@ INSTALLED_APPS = [
     'search',
     'tags',
     'carts',
+    'orders',
+    'billing',
+    'addresses',
 ]
 
 MIDDLEWARE = [
@@ -141,12 +144,13 @@ if DEBUG:
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,"static","static"),
         )
+AUTH_PROFILE_MODULE = 'profiles.Profile'
 
 SITE_ID = 1
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = 'products:list'
 
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False

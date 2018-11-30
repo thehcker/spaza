@@ -135,3 +135,4 @@ class ProductDetailSlugView(DetailView):
 # 	cart_obj, new_obj = Cart.objects.new_or_get(self.request)
 # 	context['cart'] = cart_obj
 # 	return context
+
