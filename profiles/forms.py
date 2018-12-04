@@ -5,7 +5,7 @@ from profiles.models import Profile,GuestEmail
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('name','address','description', 'image' )
+        fields = ('name','address','city','description', 'image' )
 
 class GuestForm(forms.Form):
 	# class Meta:
