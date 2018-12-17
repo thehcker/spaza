@@ -32,14 +32,14 @@ class Profile(models.Model):
 	address = models.CharField(max_length=150, blank=True)
 	city = models.CharField(max_length=120,default='')
 	phone = models.IntegerField(default=0)
-	last_seen = models.DateTimeField(auto_now=True)
+	last_seen = models.DateTimeField(auto_now_add=True)
 	description = models.TextField(max_length=150, blank=True, default="Enter your Products description")
 	image = models.ImageField(upload_to='documents/',null=True)
 
 	objects = ProfileManager()
 
-	def __unicode__(self):
-		return self.user
+	def __str__(self):
+		return self.user.username
 # @receiver(post_save,sender=User)
 # def create_profile(sender,instance,created,**kwargs):
 # 	if created:

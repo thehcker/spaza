@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col-md-4 col-sm-offset-12">
 	{% if user.profile.image %}
-		<img src="{{ user.profile.image.url }}"  width="250px" height="250px" class="rounded-circle">
+		<a href="{{ user.profile.image.url }}"><img src="{{ user.profile.image.url }}"  width="250px" height="250px" class="rounded-circle"></a>
 	{% else %}
 		<img src="{% static 'img/profile_logo1.jpg' %}" width="250px" height="250px">
 	{% endif %}
