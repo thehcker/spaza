@@ -594,24 +594,3 @@ img {
 	-webkit-animation-delay: 1.2s;
 }
 
-.box{
-	height: 100%;
-	width: 100%;
-}
-.content{
-	float: left;
-	margin-left: 10px;
-	height: 250px;
-	width: 200px;
-	border: 1px solid red;
-	margin-bottom: 10px;
-	text-align: center;
-}
-.title{
-	height: 200px;
-	width: 200px;
-	border: 1px solid black;
-}
-.img{
-	width: 200px;
-	}

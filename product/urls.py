@@ -40,6 +40,8 @@ urlpatterns = [
     path('myupload/', profiles_views.model_profile_upload, name='myupload'),
     path('accounts/', include('allauth.urls')),
     path('search/', include(('search.urls','search'),namespace='search')),
+    path('account/',profiles_views.AccountHomeView.as_view(),name='account')
+
     #path('list/', products_views.product_list_view, name='list'),
     #path('list/<int:pk>/', products_views.product_detail_view, name='detail'),
     #re_path(r'^list/(?P<slug>[\w-]+)/$', products_views.product_detail_slug_view, name='detail'),

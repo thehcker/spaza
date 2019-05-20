@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import DetailView
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -6,6 +8,7 @@ from profiles.forms import ProfileForm,GuestForm
 from profiles.models import Profile,GuestEmail
 from profiles.forms import GuestForm
 from django.utils.http import is_safe_url
+from django.utils.decorators import method_decorator
 from profiles.models import Profile
 
 #from profiles.models import Profile
@@ -65,12 +68,27 @@ def model_profile_upload(request):
     # return render(request, 'model_profile_upload.html', {
     #     'form': form
     # })
+@login_required # account/login/?next=/some/path
+def account_home_view(request):
+	return render(request, "account/account_home.html", {})
+
+
+# class LoginRequiredMixin(object):
+# 	@method_decorator(login_required)
+# 	def dispatch(self, *args, *Kwargs):
+# 		return super(LoginRequiredMixin, self).dispatch(self, *args, **kwargs)
+
+#LoginRequiredMixin
+class AccountHomeView(LoginRequiredMixin,DetailView):
+	template_name = "account/account_home.html"
+	def get_object(self):
+		return self.request.user
 
 def guest_register_view(request):
 	form = GuestForm(request.POST or None)
 	template = 'account/snippets/form1.html'
 	context = {
-		"form":form,
+		"form":form
 	}
 	next_ = request.GET.get('next')
 	next_post = request.POST.get('next')

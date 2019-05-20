@@ -6,7 +6,6 @@ from products.models import Product
 def search_product_view(request):
 	method_dict = request.GET
 	query = method_dict.get('q','Loren')
-	#lookups = Q(title__icontains=query) | Q(description__icontains=query)
 	queryset = Product.objects.search(query)
 	context = {
 		'object_list':queryset

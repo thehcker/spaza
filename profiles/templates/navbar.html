@@ -9,6 +9,7 @@
       {% url 'profile' as profile %}
       {% url 'products:list' as product_list %}
       {% url 'carts:cart' as cart %}
+      {% url 'profiles:account' as account %}
       
         <ul class="navbar-nav mr-auto">
           <li class="nav-item {% if request.path == index %} active {% endif %}">
@@ -30,6 +31,10 @@
               <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
               <a class="dropdown-item" href="{% url 'account_login' %}">Login </a>
             {% else %}
+              <a class="dropdown-item" href="{% url 'account' %}">My Account</a>
+              <a class="dropdown-item" href="{% url 'account' %}">Billing</a>
+              <a class="dropdown-item" href="{% url 'account' %}">Preferences</a>
+              <a class="dropdown-item" href="{% url 'account' %}">History</a>
               <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
             {% endif %}
             </div>
