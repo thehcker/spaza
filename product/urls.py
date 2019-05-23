@@ -34,6 +34,8 @@ urlpatterns = [
     path('contact/',contact_views.contact,name='contact'),
     path('cart/', include(('carts.urls','carts'),namespace='carts')),
     path('list/', include(('products.urls','products'),namespace='products')),
+    path('orders/', include(('orders.urls','orders'),namespace='orders')),
+
     path('analytics/', include(('analytics.urls','analytics'),namespace='history-products')),
     path('profile/',profiles_views.userProfile,name='profile'),
     path('checkout/address/create/',addresses_views.checkout_address_create_view,name='checkout_address_create'),
