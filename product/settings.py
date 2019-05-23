@@ -56,7 +56,12 @@ INSTALLED_APPS = [
     'orders',
     'billing',
     'addresses',
+    'widget_tweaks',
+    'analytics',
 ]
+
+FORCE_SESSION_TO_ONE = False
+FORCE_INACTIVE_USER_ENDSESSION = False
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

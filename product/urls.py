@@ -14,6 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
+from django.conf.urls import url
 from django.urls import path,re_path,include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -32,6 +34,7 @@ urlpatterns = [
     path('contact/',contact_views.contact,name='contact'),
     path('cart/', include(('carts.urls','carts'),namespace='carts')),
     path('list/', include(('products.urls','products'),namespace='products')),
+    path('analytics/', include(('analytics.urls','analytics'),namespace='history-products')),
     path('profile/',profiles_views.userProfile,name='profile'),
     path('checkout/address/create/',addresses_views.checkout_address_create_view,name='checkout_address_create'),
     path('checkout/address/reuse/',addresses_views.checkout_address_reuse_view,name='checkout_address_reuse'),
@@ -40,13 +43,29 @@ urlpatterns = [
     path('myupload/', profiles_views.model_profile_upload, name='myupload'),
     path('accounts/', include('allauth.urls')),
     path('search/', include(('search.urls','search'),namespace='search')),
-    path('account/',profiles_views.AccountHomeView.as_view(),name='account')
+    path('account/',profiles_views.AccountHomeView.as_view(),name='account'),
+    
+    path('reset/',auth_views.PasswordResetView.as_view(
+            template_name='password_reset.html',
+            email_template_name='password_reset_email.html',
+            subject_template_name='password_reset_subject.txt'
+        ),
+        name='password_reset'),
+    path('reset/done/',
+        auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'),
+        name='password_reset_done'),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+    auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'),
+    name='password_reset_confirm'),
+    path('reset/complete/',
+        auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'),
+        name='password_reset_complete'),
 
-    #path('list/', products_views.product_list_view, name='list'),
-    #path('list/<int:pk>/', products_views.product_detail_view, name='detail'),
-    #re_path(r'^list/(?P<slug>[\w-]+)/$', products_views.product_detail_slug_view, name='detail'),
-    #path('featured/', products_views.product_featured_list_view, name='featured'),
-    #path('featured/<int:pk>/', products_views.product_featured_detail_view, name='featured-detail'),
+    path('settings/password/', auth_views.PasswordChangeView.as_view(template_name='password_change.html'),
+        name='password_change'),
+    path('settings/password/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),
+    name='password_change_done'),
+
 ]
 
 if settings.DEBUG:
