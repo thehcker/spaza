@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dropdown Website</title>
+	<style type="text/css">
+		.drop{
+			background-color: beige;
+			color: blue;
+			width: 100px;
+			padding: 10px;
+			font-size: 14px;
+			border: 2px solid blue;
+			cursor: crosshair;
+		}
+		.containeer{
+			position: relative;
+			width: 100px;
+			margin-top: 10px;
+			margin-left: 100%;
+			display: inline-block;
+		}
+		.conteent{
+			display: none;
+			position: absolute;
+			z-index: 1;
+			background-color: grey;
+
+		}
+
+		.conteent a {
+			color: black;
+			padding: 10px;
+			text-decoration: none;
+			display: block;
+		}
+		.containeer:hover .conteent {
+			display: block;
+		}
+		.containeer:hover .drop{
+			background-color: white;
+		}
+		.conteent a:hover {
+			background-color: azure;
+		}
+
+
+	</style>
+</head>
+<body>
+<div class="containeer">
+	<button class="drop">Menu</button>
+	<div class="conteent">
+		<a href="{% url 'account' %}">Support</a><hr>
+		<a href="{% url 'account' %}">Billing</a><hr>
+		<a href="{% url 'account' %}">Preferences</a><hr>
+		<a href="{% url 'account' %}">History</a>
+	</div>
+</div>
+</body>
+</html>
