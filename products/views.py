@@ -101,7 +101,7 @@ def product_detail_view(request,pk=None,*args,**kwargs):
     }
 	return render(request, "products/detail.html", context)
 
-class ProductDetailSlugView(ObjectViewedMixin, DetailView):
+class ProductDetailSlugView(ObjectViewedMixin,LoginRequiredMixin, DetailView):
     queryset = Product.objects.all()
     template_name = "products/detail.html"
 
