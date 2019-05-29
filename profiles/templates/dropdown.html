@@ -9,7 +9,7 @@
 			width: 100px;
 			padding: 10px;
 			font-size: 14px;
-			border: 2px solid blue;
+			border: 2px solid teal;
 			cursor: crosshair;
 		}
 		.containeer{
@@ -43,12 +43,25 @@
 			background-color: azure;
 		}
 
+		span > i{
+			  border: solid grey;
+			  border-width: 0 3px 3px 0;
+			  display: inline-block;
+			  padding: 3px;
+			}
+		
+		.down {
+			margin-left: 5px;
+		  transform: rotate(45deg);
+		  -webkit-transform: rotate(45deg);
+		}
+
 
 	</style>
 </head>
 <body>
 <div class="containeer">
-	<button class="drop">Menu</button>
+	<button class="drop">Menu<span><i class="arrow down"></i></span></button>
 	<div class="conteent">
 		<a href="{% url 'account' %}">Support</a><hr>
 		<a href="{% url 'account' %}">Billing</a><hr>
