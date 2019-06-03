@@ -2,25 +2,23 @@
 
 {% block content %}
 <div class="container">
+	
 	<div class="row">
-		<div class="col-md-4">
-		<form method="GET">
-		{% for obj in title %}
-		{{ obj.document.url }}
-
-		{% endfor %}
-		</form>
-
+		<div class="col-md-3">
+		
 		</div>
-		<div class="col-sm-4">
-	  <form method="post" enctype="multipart/form-data">
-	    {% csrf_token %}
-	    {{ form.as_p }}
-	    <button type="submit">Upload</button>
-	  </form>
+		<div class="col-12 col-md-6 col-lg-4 col-sm-6 my-5">
+		  <form method="post" enctype="multipart/form-data">
+		    {% csrf_token %}
+		    {{ form.as_p }}
+		    <button type="submit">Upload</button>
+		  	</form>
 
-	  <p><a href="{% url 'index' %}">Return to home</a></p>
+		  	<p><a href="{% url 'index' %}">Return to home</a></p>
+		  	</div>
+		  	<div class="col-md-3">
+		
+			</div>
 	  </div>
-	  </div>
-  </div>
+</div>
 {% endblock %}

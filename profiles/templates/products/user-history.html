@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+{% include 'dropdown.html' %}
 <div class="container">
-	{% include 'dropdown.html' %}
+	
 	<div class="row">
 		<div class="col-12 my-3">
 			<h1>Product History View</h1>
@@ -9,16 +10,14 @@
 		</div>
 		
 	{% for obj in object_list %}
-	<div class="row">
-	<div class="col-12">
-	<div class="card my-3 mx-2" >
+	<div class="col-12 col-md-3">
+	<div class="card my-3">
 			<div class="card-body">
 	<!--{{ forloop.counter }}-->
 	{% include 'products/snippets/card.html' with instance=obj.content_object %}
 			</div>
 		</div>
 	</div>
-</div>
 	{% endfor %}
 	</div>
 </div>

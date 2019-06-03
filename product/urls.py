@@ -35,13 +35,11 @@ urlpatterns = [
     path('cart/', include(('carts.urls','carts'),namespace='carts')),
     path('list/', include(('products.urls','products'),namespace='products')),
     path('orders/', include(('orders.urls','orders'),namespace='orders')),
-
     path('analytics/', include(('analytics.urls','analytics'),namespace='history-products')),
     path('profile/',profiles_views.userProfile,name='profile'),
     path('checkout/address/create/',addresses_views.checkout_address_create_view,name='checkout_address_create'),
     path('checkout/address/reuse/',addresses_views.checkout_address_reuse_view,name='checkout_address_reuse'),
     path('register/guest/',profiles_views.guest_register_view,name='guest_register'),
-    path('profile/', profiles_views.userProfile, name='profile'),
     path('myupload/', profiles_views.model_profile_upload, name='myupload'),
     path('accounts/', include('allauth.urls')),
     path('search/', include(('search.urls','search'),namespace='search')),
